@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=localhost
+      - DB_PORT=5432
+      - DB_USERNAME=your_username
+      - DB_PASSWORD=your_password
+      - DB_DATABASE=your_database
+      - MORALIS_API_KEY=your_moralis_api_key
+      - ETH_ADDRESS=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+      - MATIC_ADDRESS=0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0
+      - BTC_ADDRESS=0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=465
+      - SMTP_USER=your_email@gmail.com
+      - SMTP_PASS=your_email_password
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=your_username
+      - POSTGRES_PASSWORD=your_password
+      - POSTGRES_DB=your_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
