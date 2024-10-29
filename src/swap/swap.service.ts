@@ -38,4 +38,3 @@ export class SwapService {
     }
   }
 }
-// http://localhost:3000/swap/rate?ethAmount=1
