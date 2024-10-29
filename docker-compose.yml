@@ -1,3 +1,4 @@
+# docker-compose.yml
 version: '3.8'
 
 services:
@@ -6,19 +7,19 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=localhost
+      - DB_HOST=postgres
       - DB_PORT=5432
-      - DB_USERNAME=your_username
+      - DB_USERNAME=postgres
       - DB_PASSWORD=your_password
       - DB_DATABASE=your_database
-      - MORALIS_API_KEY=your_moralis_api_key
-      - ETH_ADDRESS=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
-      - MATIC_ADDRESS=0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0
-      - BTC_ADDRESS=0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599
-      - SMTP_HOST=smtp.gmail.com
-      - SMTP_PORT=465
-      - SMTP_USER=your_email@gmail.com
-      - SMTP_PASS=your_email_password
+      - MORALIS_API_KEY=${MORALIS_API_KEY}
+      - ETH_ADDRESS=${ETH_ADDRESS}
+      - MATIC_ADDRESS=${MATIC_ADDRESS}
+      - BTC_ADDRESS=${BTC_ADDRESS}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
     depends_on:
       - postgres
 
@@ -30,6 +31,8 @@ services:
       - POSTGRES_DB=your_database
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
 volumes:
   postgres_data:
